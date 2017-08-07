@@ -1,10 +1,10 @@
 Sms
 ========
-[![Build Status](https://img.shields.io/travis/lichunqiang/skeleton.svg?style=flat-square)](http://travis-ci.org/lichunqiang/skeleton)
-[![version](https://img.shields.io/packagist/v/light/skeleton.svg?style=flat-square)](https://packagist.org/packages/light/skeleton)
-[![Download](https://img.shields.io/packagist/dt/light/skeleton.svg?style=flat-square)](https://packagist.org/packages/light/skeleton)
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/lichunqiang/skeleton.svg?style=flat-square)](https://scrutinizer-ci.com/g/lichunqiang/skeleton)
-[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/lichunqiang/skeleton.svg?style=flat-square)](https://scrutinizer-ci.com/g/lichunqiang/skeleton)
+[![Build Status](https://img.shields.io/travis/lichunqiang/sms.svg?style=flat-square)](http://travis-ci.org/lichunqiang/sms)
+[![version](https://img.shields.io/packagist/v/yii2-contrib/sms.svg?style=flat-square)](https://packagist.org/packages/yii2-contrib/sms)
+[![Download](https://img.shields.io/packagist/dt/yii2-contrib/sms.svg?style=flat-square)](https://packagist.org/packages/yii2-contrib/sms)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/lichunqiang/sms.svg?style=flat-square)](https://scrutinizer-ci.com/g/lichunqiang/sms)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/lichunqiang/sms.svg?style=flat-square)](https://scrutinizer-ci.com/g/lichunqiang/sms)
 [![Contact](https://img.shields.io/badge/weibo-@chunqiang-blue.svg?style=flat-square)](http://weibo.com/chunqiang)
 
 
