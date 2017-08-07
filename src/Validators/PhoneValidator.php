@@ -1,6 +1,5 @@
 <?php
 
-
 namespace YiiContrib\Sms\Validators;
 
 use Yii;
@@ -8,14 +7,20 @@ use yii\validators\Validator;
 
 class PhoneValidator extends Validator
 {
+    /**
+     * @var string
+     */
     public $regexp = '/^1\d{10}/';
     
+    /**
+     * @inheritdoc
+     */
     public function init()
     {
         parent::init();
         
         if (null === $this->message) {
-            $this->message = Yii::t('validator', '"{value}" is not an valid phone number');
+            $this->message = Yii::t('contrib-sms', '"{value}" is not an valid phone number');
         }
     }
     

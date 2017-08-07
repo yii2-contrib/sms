@@ -1,4 +1,4 @@
-Skeleton
+Sms
 ========
 [![Build Status](https://img.shields.io/travis/lichunqiang/skeleton.svg?style=flat-square)](http://travis-ci.org/lichunqiang/skeleton)
 [![version](https://img.shields.io/packagist/v/light/skeleton.svg?style=flat-square)](https://packagist.org/packages/light/skeleton)
@@ -16,13 +16,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist yii2-contrib/skeleton "~1.0.0"
+php composer.phar require --prefer-dist yii2-contrib/sms "*"
 ```
 
 or add
 
 ```
-"yii2-contrib/skeleton": "~1.0.0"
+"yii2-contrib/sms": "*"
 ```
 
 to the require section of your `composer.json` file.
@@ -30,12 +30,7 @@ to the require section of your `composer.json` file.
 Usage
 -----
 
-```
-$skeleton = new \YiiContrib\Skeleton\Skeleton();
-$skeleton->run();
-```
-
-
+TBD
 
 Tests
 -----

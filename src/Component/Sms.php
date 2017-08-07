@@ -9,8 +9,32 @@ use Overtrue\EasySms\Messenger;
 use Overtrue\EasySms\Strategies\OrderStrategy;
 use yii\base\Component;
 use yii\console\controllers\MessageController;
+use YiiContrib\Sms\Event\AfterSendEvent;
 use YiiContrib\Sms\Event\BeforeSendEvent;
 
+/**
+ * Sms is the component build on `overtrue/easy-sms`.
+ *
+ * This component is build a simple interface to send message.
+ *
+ * The configuration like this:
+ * maybe `main.php`, this depends on your application template
+ *
+ * ```
+ * 'sms' => [
+ *     'class' => \YiiContrib\Sms\Component\Sms::class,
+ *     'gateways' => [
+ *          'errorlog' => [
+ *              'file' => '/tmp/easy-sms.log',
+ *          ],
+ *     ],
+ * ]
+ * ```
+ * More gateways configuration please refer the `overtrue/easy-sms`.
+ *
+ * @author lichunqaing<light-li@hotmail.com>
+ * @since 1.0.0
+ */
 class Sms extends Component
 {
     const EVENT_BEFORE_SEND = 'beforeSend';
@@ -66,12 +90,16 @@ class Sms extends Component
         
         $result = $this->_sms->send($to, $message, $gateways);
         
+        $this->trigger(self::EVENT_AFTER_SEND, new AfterSendEvent([
+            'result' => $result,
+        ]));
+        
         foreach ($result as $gateway => $_result) {
-            if ($_result['status'] === Messenger::STATUS_ERRED) {
-                return false;
+            if ($_result['status'] === Messenger::STATUS_SUCCESS) {
+                return true;
             }
         }
         
-        return true;
+        return false;
     }
 }

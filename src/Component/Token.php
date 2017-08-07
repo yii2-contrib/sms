@@ -58,4 +58,32 @@ class Token extends Component implements TokenInterface
         
         return $token;
     }
+    
+    /**
+     * @inheritdoc
+     */
+    public function remove($key = null)
+    {
+        $this->persistence->remove($key ?: $this->persistence->buildKey($this->seed));
+        
+        return true;
+    }
+    
+    /**
+     * @inheritdoc
+     */
+    public function exists($key = null)
+    {
+        return $this->persistence->exists($key ?: $this->persistence->buildKey($this->seed));
+    }
+    
+    /**
+     * @param null|string $key
+     *
+     * @return mixed
+     */
+    public function get($key = null)
+    {
+        return $this->persistence->get($key ?: $this->persistence->buildKey($this->seed));
+    }
 }

@@ -1,14 +1,17 @@
 <?php
 
-
 namespace YiiContrib\Sms\Persistence;
 
+use yii\base\InvalidValueException;
 use yii\redis\Connection;
 use yii\di\Instance;
 
 final class Redis extends Persistence
 {
-    public $redis;
+    /**
+     * @var string|array|Connection The component id or configuration array or component object of the redis.
+     */
+    public $redis = 'redis';
     
     public function init()
     {
@@ -22,11 +25,11 @@ final class Redis extends Persistence
      * @param string $value
      * @param int $expire
      *
-     * @return mixed
+     * @return bool
      */
     public function set($key, $value, $expire = 60)
     {
-        // TODO: Implement set() method.
+        return $this->redis->setex($key, $expire, $value);
     }
     
     /**
@@ -36,7 +39,7 @@ final class Redis extends Persistence
      */
     public function exists($key)
     {
-        // TODO: Implement exists() method.
+        return $this->redis->exists($key);
     }
     
     /**
@@ -46,7 +49,7 @@ final class Redis extends Persistence
      */
     public function get($key)
     {
-        // TODO: Implement get() method.
+        return $this->redis->get($key);
     }
     
     /**
@@ -56,7 +59,7 @@ final class Redis extends Persistence
      */
     public function remove($key)
     {
-        // TODO: Implement remove() method.
+        return $this->redis->del($key);
     }
     
     /**
@@ -66,6 +69,6 @@ final class Redis extends Persistence
      */
     public function buildKey($phone)
     {
-        // TODO: Implement buildKey() method.
+        return "sms:token:{$phone}";
     }
 }

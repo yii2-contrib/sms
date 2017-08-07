@@ -57,7 +57,7 @@ final class Session extends Persistence
         list($token, $expiry) = explode(':', $data);
         
         if ($expiry > time()) {
-            return $data;
+            return $token;
         }
         $this->remove($key);
         
