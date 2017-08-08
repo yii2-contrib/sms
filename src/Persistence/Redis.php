@@ -2,9 +2,8 @@
 
 namespace YiiContrib\Sms\Persistence;
 
-use yii\base\InvalidValueException;
-use yii\redis\Connection;
 use yii\di\Instance;
+use yii\redis\Connection;
 
 final class Redis extends Persistence
 {

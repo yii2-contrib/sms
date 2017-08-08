@@ -2,14 +2,14 @@
 
 namespace YiiContrib\Sms\Component;
 
-use yii\base\Component;
+use yii\base\Object;
 use yii\di\Instance;
 use YiiContrib\Sms\Contracts\TokenInterface;
 use YiiContrib\Sms\Helpers\TokenHelper;
 use YiiContrib\Sms\Persistence\PersistenceInterface;
 use YiiContrib\Sms\Persistence\Session;
 
-class Token extends Component implements TokenInterface
+class Token extends Object implements TokenInterface
 {
     /**
      * @var int The token expiry time.

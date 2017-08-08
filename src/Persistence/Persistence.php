@@ -2,9 +2,9 @@
 
 namespace YiiContrib\Sms\Persistence;
 
-use yii\base\Component;
+use yii\base\Object;
 
-abstract class Persistence extends Component implements PersistenceInterface
+abstract class Persistence extends Object implements PersistenceInterface
 {
     
 }
