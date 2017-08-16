@@ -4,6 +4,7 @@ namespace YiiContrib\Sms\Actions;
 
 use Yii;
 use yii\base\Action;
+use yii\base\InvalidConfigException;
 use yii\di\Instance;
 use yii\validators\Validator;
 use yii\web\BadRequestHttpException;
@@ -47,9 +48,13 @@ class SendAction extends Action
     {
         parent::init();
         
-        if (Yii::$app->request->isAjax) {
+        if (!Yii::$app->request->isAjax) {
             throw new BadRequestHttpException(Yii::t('contrib-sms', 'This only can access via ajax.'));
         }
+        if (!$this->message) {
+            throw new InvalidConfigException('Please configrate the "message" attribute!');
+        }
+        
         //json response
         Yii::$app->getResponse()->format = Response::FORMAT_JSON;
         
