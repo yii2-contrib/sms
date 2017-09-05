@@ -21,6 +21,10 @@ class SendAction extends Action
      */
     public $phoneParam = 'phone';
     /**
+     * @var \Closure
+     */
+    public $phoneValue;
+    /**
      * @var string
      */
     public $method = 'get';
@@ -70,7 +74,11 @@ class SendAction extends Action
     public function run()
     {
         $method = strtolower($this->method);
-        $phone = Yii::$app->getRequest()->{$method}($this->phoneParam);
+        if (is_callable($this->phoneValue)) {
+            $phone = call_user_func($this->phoneValue);
+        } else {
+            $phone = Yii::$app->getRequest()->{$method}($this->phoneParam);
+        }
         
         if (empty($phone)) {
             return [
