@@ -2,10 +2,14 @@
 
 namespace YiiContrib\Sms\Component;
 
+use Exception;
 use Overtrue\EasySms\Contracts\StrategyInterface;
 use Overtrue\EasySms\EasySms;
+use Overtrue\EasySms\Exceptions\NoGatewayAvailableException;
 use Overtrue\EasySms\Messenger;
 use Overtrue\EasySms\Strategies\OrderStrategy;
+use Throwable;
+use Yii;
 use yii\base\Component;
 use YiiContrib\Sms\Event\AfterSendEvent;
 use YiiContrib\Sms\Event\BeforeSendEvent;
@@ -85,19 +89,28 @@ class Sms extends Component
             'to' => $to,
             'message' => $message,
         ]));
+    
+        try {
+            $result = $this->_sms->send($to, $message, $gateways);
         
-        $result = $this->_sms->send($to, $message, $gateways);
+            $this->trigger(self::EVENT_AFTER_SEND, new AfterSendEvent([
+                'result' => $result,
+            ]));
         
-        $this->trigger(self::EVENT_AFTER_SEND, new AfterSendEvent([
-            'result' => $result,
-        ]));
-        
-        foreach ($result as $gateway => $_result) {
-            if ($_result['status'] === Messenger::STATUS_SUCCESS) {
-                return true;
+            foreach ($result as $gateway => $_result) {
+                if ($_result['status'] === Messenger::STATUS_SUCCESS) {
+                    return true;
+                }
+                Yii::error($_result, __CLASS__);
             }
+        } catch (NoGatewayAvailableException $e) {
+            Yii::error($e->results, __CLASS__);
+        } catch (Exception $e) {
+            Yii::error($e, __CLASS__);
+        } catch (Throwable $e) {
+            Yii::error($e, __CLASS__);
         }
-        
+    
         return false;
     }
 }

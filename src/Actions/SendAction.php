@@ -118,6 +118,8 @@ class SendAction extends Action
         $result = $this->sms->send($phone, $this->message);
         
         if (false === $result) {
+            $token->remove();
+            
             return [
                 'errcode' => 1,
                 'errmsg' => Yii::t('contrib-sms', 'Send token error, please retry.'),
@@ -128,7 +130,6 @@ class SendAction extends Action
             'errcode' => 0,
             'errmsg' => Yii::t('contrib-sms', 'OK'),
             'data' => [
-                'token' => $token_str,
                 'expiry' => $token->expiry,
             ],
         ];
