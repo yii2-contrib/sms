@@ -6,7 +6,7 @@
     <br>
 </p>
 
-[![Build Status](https://img.shields.io/travis/lichunqiang/sms.svg?style=flat-square)](http://travis-ci.org/lichunqiang/sms)
+[![Build Status](https://img.shields.io/travis/yii2-contrib/sms.svg?style=flat-square)](http://travis-ci.org/lichunqiang/sms)
 [![version](https://img.shields.io/packagist/v/yii2-contrib/sms.svg?style=flat-square)](https://packagist.org/packages/yii2-contrib/sms)
 [![Download](https://img.shields.io/packagist/dt/yii2-contrib/sms.svg?style=flat-square)](https://packagist.org/packages/yii2-contrib/sms)
 [![Contact](https://img.shields.io/badge/weibo-@chunqiang-blue.svg?style=flat-square)](http://weibo.com/chunqiang)
