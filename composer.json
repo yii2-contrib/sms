@@ -17,7 +17,7 @@
   ],
   "require": {
     "php": "~5.6|~7.0",
-    "yiisoft/yii2": "^2.0",
+    "yiisoft/yii2": "~2.0.13",
     "overtrue/easy-sms": "^0.0.9"
   },
   "suggest": {
