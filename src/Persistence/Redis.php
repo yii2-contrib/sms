@@ -36,7 +36,7 @@ final class Redis extends Persistence
      *
      * @return bool
      */
-    public function exists($key)
+    public function exists($key): bool
     {
         return $this->redis->exists($key);
     }
@@ -56,6 +56,16 @@ final class Redis extends Persistence
      *
      * @return mixed
      */
+    public function ttl($key): int
+    {
+        return $this->redis->ttl($key);
+    }
+    
+    /**
+     * @param string $key
+     *
+     * @return mixed
+     */
     public function remove($key)
     {
         return $this->redis->del($key);
@@ -66,7 +76,7 @@ final class Redis extends Persistence
      *
      * @return string
      */
-    public function buildKey($phone)
+    public function buildKey($phone): string
     {
         return "sms:token:{$phone}";
     }

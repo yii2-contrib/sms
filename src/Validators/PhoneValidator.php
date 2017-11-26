@@ -10,7 +10,7 @@ class PhoneValidator extends Validator
     /**
      * @var string
      */
-    public $regexp = '/^1\d{10}/';
+    public $regexp = '/^1[34578]\d{9}$/';
     
     /**
      * @inheritdoc

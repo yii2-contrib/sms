@@ -2,14 +2,14 @@
 
 namespace YiiContrib\Sms\Component;
 
-use yii\base\Object;
+use yii\base\BaseObject;
 use yii\di\Instance;
 use YiiContrib\Sms\Contracts\TokenInterface;
 use YiiContrib\Sms\Helpers\TokenHelper;
 use YiiContrib\Sms\Persistence\PersistenceInterface;
 use YiiContrib\Sms\Persistence\Session;
 
-class Token extends Object implements TokenInterface
+class Token extends BaseObject implements TokenInterface
 {
     /**
      * @var int The token expiry time.
@@ -72,7 +72,7 @@ class Token extends Object implements TokenInterface
     /**
      * @inheritdoc
      */
-    public function exists($key = null)
+    public function exists($key = null): bool
     {
         return $this->persistence->exists($key ?: $this->persistence->buildKey($this->seed));
     }
@@ -85,5 +85,15 @@ class Token extends Object implements TokenInterface
     public function get($key = null)
     {
         return $this->persistence->get($key ?: $this->persistence->buildKey($this->seed));
+    }
+    
+    /**
+     * @param null|string $key
+     *
+     * @return int
+     */
+    public function ttl($key = null): int
+    {
+        return $this->persistence->ttl($key ?: $this->persistence->buildKey($this->seed));
     }
 }

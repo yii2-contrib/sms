@@ -21,7 +21,7 @@ interface TokenInterface
      *
      * @return bool
      */
-    public function exists($key = null);
+    public function exists($key = null): bool;
     
     /**
      * @param null|string $key
@@ -29,4 +29,11 @@ interface TokenInterface
      * @return mixed
      */
     public function get($key = null);
+    
+    /**
+     * @param null|string $key
+     *
+     * @return int
+     */
+    public function ttl($key = null): int;
 }

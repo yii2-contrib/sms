@@ -105,8 +105,9 @@ class SendAction extends Action
         
         if ($token->exists()) {
             return [
-                'errcode' => 1,
+                'errcode' => 2,
                 'errmsg' => Yii::t('contrib-sms', 'The token had been sent.'),
+                'ttl' => $token->ttl(),
             ];
         }
         

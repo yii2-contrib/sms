@@ -39,7 +39,7 @@ final class Session extends Persistence
     /**
      * @inheritdoc
      */
-    public function exists($key)
+    public function exists($key): bool
     {
         return null !== $this->get($key);
     }
@@ -65,6 +65,25 @@ final class Session extends Persistence
     }
     
     /**
+     * @param string $key
+     *
+     * @return mixed
+     */
+    public function ttl($key): int
+    {
+        $data = $this->session->get($key);
+        
+        if (!$data) {
+            return 0;
+        }
+        list(, $expiry) = explode(':', $data);
+        
+        $ttl = $expiry - time();
+        
+        return $ttl > 0 ? $ttl : 0;
+    }
+    
+    /**
      * @inheritdoc
      */
     public function remove($key)
@@ -75,10 +94,8 @@ final class Session extends Persistence
     /**
      * @inheritdoc
      */
-    public function buildKey($phone)
+    public function buildKey($phone): string
     {
         return '_sms_token';
     }
-    
-    
 }

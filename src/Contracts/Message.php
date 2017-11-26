@@ -4,9 +4,9 @@ namespace YiiContrib\Sms\Contracts;
 
 use Overtrue\EasySms\Contracts\GatewayInterface;
 use Overtrue\EasySms\Contracts\MessageInterface;
-use yii\base\Object;
+use yii\base\BaseObject;
 
-class Message extends Object implements MessageInterface
+class Message extends BaseObject implements MessageInterface
 {
     /**
      * @var string

@@ -4,8 +4,6 @@ namespace YiiContrib\Sms\Actions;
 
 use Yii;
 use yii\base\Action;
-use yii\di\Instance;
-use yii\validators\Validator;
 use yii\web\Response;
 use YiiContrib\Sms\Validators\TokenValidator;
 
@@ -67,6 +65,7 @@ class TokenValidateAction extends Action
     public function beforeRun()
     {
         Yii::$app->getResponse()->format = Response::FORMAT_JSON;
+        
         return parent::beforeRun();
     }
 }

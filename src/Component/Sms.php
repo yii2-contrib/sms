@@ -4,11 +4,9 @@ namespace YiiContrib\Sms\Component;
 
 use Overtrue\EasySms\Contracts\StrategyInterface;
 use Overtrue\EasySms\EasySms;
-use Overtrue\EasySms\Message;
 use Overtrue\EasySms\Messenger;
 use Overtrue\EasySms\Strategies\OrderStrategy;
 use yii\base\Component;
-use yii\console\controllers\MessageController;
 use YiiContrib\Sms\Event\AfterSendEvent;
 use YiiContrib\Sms\Event\BeforeSendEvent;
 

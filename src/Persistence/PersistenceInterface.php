@@ -20,7 +20,7 @@ interface PersistenceInterface
      *
      * @return bool
      */
-    public function exists($key);
+    public function exists($key): bool;
     
     /**
      * @param string $key
@@ -37,9 +37,16 @@ interface PersistenceInterface
     public function remove($key);
     
     /**
+     * @param string $key
+     *
+     * @return mixed
+     */
+    public function ttl($key): int;
+    
+    /**
      * @param string $phone
      *
      * @return string
      */
-    public function buildKey($phone);
+    public function buildKey($phone): string;
 }
